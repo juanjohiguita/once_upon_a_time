@@ -8,6 +8,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'form_story_model.dart';
@@ -94,9 +95,7 @@ class _FormStoryWidgetState extends State<FormStoryWidget> {
             ),
           ),
           title: Text(
-            FFLocalizations.of(context).getText(
-              '68bo8a51' /* Create a story for children */,
-            ),
+            'Create a story for children',
             style: FlutterFlowTheme.of(context).titleLarge.override(
                   fontFamily: 'Outfit',
                   color: FlutterFlowTheme.of(context).secondary,
@@ -143,9 +142,7 @@ class _FormStoryWidgetState extends State<FormStoryWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'znq17oa7' /* Child's Name (main character) */,
-                                ),
+                                'Child\'s Name (main character)',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -163,9 +160,7 @@ class _FormStoryWidgetState extends State<FormStoryWidget> {
                               decoration: InputDecoration(
                                 labelStyle:
                                     FlutterFlowTheme.of(context).bodyMedium,
-                                hintText: FFLocalizations.of(context).getText(
-                                  'l9jswgdh' /* Bruno */,
-                                ),
+                                hintText: 'Bruno',
                                 hintStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
                                 enabledBorder: OutlineInputBorder(
@@ -209,9 +204,7 @@ class _FormStoryWidgetState extends State<FormStoryWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 5.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'jhy3hj9p' /* Theme: */,
-                                ),
+                                'Theme:',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -223,30 +216,15 @@ class _FormStoryWidgetState extends State<FormStoryWidget> {
                             FlutterFlowDropDown<String>(
                               controller: _model.dDTopicThemeValueController ??=
                                   FormFieldController<String>(
-                                _model.dDTopicThemeValue ??=
-                                    FFLocalizations.of(context).getText(
-                                  'c8re3cht' /* Love */,
-                                ),
+                                _model.dDTopicThemeValue ??= 'Love',
                               ),
                               options: [
-                                FFLocalizations.of(context).getText(
-                                  '7zydwjvc' /* Grit */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'bodsc7qu' /* Learning to learn */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  '06rl2c7v' /* Modern gender roles */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'ojywyf38' /* Growth mindset */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'nupdpizk' /* Love */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'ad6kuh8i' /* Power of diversity */,
-                                )
+                                'Grit',
+                                'Learning to learn',
+                                'Modern gender roles',
+                                'Growth mindset',
+                                'Love',
+                                'Power of diversity'
                               ],
                               onChanged: (val) => setState(
                                   () => _model.dDTopicThemeValue = val),
@@ -254,9 +232,7 @@ class _FormStoryWidgetState extends State<FormStoryWidget> {
                               height: 50.0,
                               textStyle:
                                   FlutterFlowTheme.of(context).bodyMedium,
-                              hintText: FFLocalizations.of(context).getText(
-                                '942kkyou' /* Please select the theme... */,
-                              ),
+                              hintText: 'Please select the theme...',
                               icon: Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 color:
@@ -280,37 +256,23 @@ class _FormStoryWidgetState extends State<FormStoryWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 5.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'jeaixob5' /* Reading duration: */,
-                                ),
+                                'Reading duration:',
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ),
                             FlutterFlowDropDown<String>(
                               controller: _model.dDDurationValueController ??=
                                   FormFieldController<String>(
-                                _model.dDDurationValue ??=
-                                    FFLocalizations.of(context).getText(
-                                  'mkamv8j7' /* 5 minutes */,
-                                ),
+                                _model.dDDurationValue ??= '5 minutes',
                               ),
-                              options: [
-                                FFLocalizations.of(context).getText(
-                                  'xlbexov9' /* 5 minutes */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'fzbgzber' /* 10 minutes */,
-                                )
-                              ],
+                              options: ['5 minutes', '10 minutes'],
                               onChanged: (val) =>
                                   setState(() => _model.dDDurationValue = val),
                               width: 300.0,
                               height: 50.0,
                               textStyle:
                                   FlutterFlowTheme.of(context).bodyMedium,
-                              hintText: FFLocalizations.of(context).getText(
-                                'qpjdurdf' /* Please select... */,
-                              ),
+                              hintText: 'Please select...',
                               icon: Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 color:
@@ -334,51 +296,26 @@ class _FormStoryWidgetState extends State<FormStoryWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 5.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'osp6ezxf' /* Child stage: */,
-                                ),
+                                'Child stage:',
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ),
                             FlutterFlowDropDown<String>(
                               controller: _model.dDChildAgeValueController ??=
                                   FormFieldController<String>(
-                                _model.dDChildAgeValue ??=
-                                    FFLocalizations.of(context).getText(
-                                  '08mkq0zp' /* New born */,
-                                ),
+                                _model.dDChildAgeValue ??= 'New born',
                               ),
                               options: [
-                                FFLocalizations.of(context).getText(
-                                  'fnwmewhq' /* New born */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  '31njkxa1' /* 6 months */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'avom0wg4' /* 8 months */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'yxdaim67' /* 1 year */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  '70wl7rvf' /* 2 years */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'ysaa3sqh' /* 3 years */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  '90xh61bu' /* 4 years */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'dyl0fxm4' /* 5 years */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  '11k27xp4' /* 6 years */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'q11ckhsu' /* 7 years */,
-                                )
+                                'New born',
+                                '6 months',
+                                '8 months',
+                                '1 year',
+                                '2 years',
+                                '3 years',
+                                '4 years',
+                                '5 years',
+                                '6 years',
+                                '7 years'
                               ],
                               onChanged: (val) =>
                                   setState(() => _model.dDChildAgeValue = val),
@@ -386,9 +323,7 @@ class _FormStoryWidgetState extends State<FormStoryWidget> {
                               height: 50.0,
                               textStyle:
                                   FlutterFlowTheme.of(context).bodyMedium,
-                              hintText: FFLocalizations.of(context).getText(
-                                'xqaavc7e' /* Please select... */,
-                              ),
+                              hintText: 'Please select...',
                               icon: Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 color:
@@ -412,42 +347,23 @@ class _FormStoryWidgetState extends State<FormStoryWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 5.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'rlsaaf2y' /* Environment of the story: */,
-                                ),
+                                'Environment of the story:',
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ),
                             FlutterFlowDropDown<String>(
                               controller: _model.dDEnviromentValueController ??=
                                   FormFieldController<String>(
-                                _model.dDEnviromentValue ??=
-                                    FFLocalizations.of(context).getText(
-                                  '5k8z0vaw' /* Jungle */,
-                                ),
+                                _model.dDEnviromentValue ??= 'Jungle',
                               ),
                               options: [
-                                FFLocalizations.of(context).getText(
-                                  'mkd2b540' /* Jungle */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'sbti8y4f' /* Space */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  '0hte6npc' /* Under the sea */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'go85dt2s' /* Home */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  '4lsq5owq' /* Family */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'q1pancyg' /* Beach */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'e1g2dgyu' /* Mountain */,
-                                )
+                                'Jungle',
+                                'Space',
+                                'Under the sea',
+                                'Home',
+                                'Family',
+                                'Beach',
+                                'Mountain'
                               ],
                               onChanged: (val) => setState(
                                   () => _model.dDEnviromentValue = val),
@@ -455,9 +371,7 @@ class _FormStoryWidgetState extends State<FormStoryWidget> {
                               height: 50.0,
                               textStyle:
                                   FlutterFlowTheme.of(context).bodyMedium,
-                              hintText: FFLocalizations.of(context).getText(
-                                'joa5hnpg' /* Please select... */,
-                              ),
+                              hintText: 'Please select...',
                               icon: Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 color:
@@ -555,9 +469,7 @@ class _FormStoryWidgetState extends State<FormStoryWidget> {
 
                                   setState(() {});
                                 },
-                                text: FFLocalizations.of(context).getText(
-                                  'c1zhwe8i' /* Create */,
-                                ),
+                                text: 'Create',
                                 icon: Icon(
                                   Icons.receipt_long,
                                   size: 15.0,

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'settings_model.dart';
@@ -300,9 +301,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 16.0),
                 child: Text(
-                  FFLocalizations.of(context).getText(
-                    '9ukm505p' /* Settings */,
-                  ),
+                  'Settings',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',
                         color: FlutterFlowTheme.of(context).secondaryText,
@@ -352,9 +351,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                'befzmxnz' /* Subscription / Payment */,
-                              ),
+                              'Subscription / Payment',
                               style: FlutterFlowTheme.of(context).bodyLarge,
                             ),
                           ),
@@ -375,9 +372,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
 
                     context.goNamedAuth('Login', context.mounted);
                   },
-                  text: FFLocalizations.of(context).getText(
-                    'nbpnpnai' /* Log Out */,
-                  ),
+                  text: 'Log Out',
                   options: FFButtonOptions(
                     width: 150.0,
                     height: 50.0,

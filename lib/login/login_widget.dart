@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -180,9 +181,7 @@ class _LoginWidgetState extends State<LoginWidget>
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 72.0),
                     child: Text(
-                      FFLocalizations.of(context).getText(
-                        'pp9usjw3' /* Once upon a time... */,
-                      ),
+                      'Once upon a time...',
                       style: FlutterFlowTheme.of(context).displaySmall.override(
                             fontFamily: 'Outfit',
                             color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -263,16 +262,10 @@ class _LoginWidgetState extends State<LoginWidget>
                                               32.0, 0.0, 32.0, 0.0),
                                       tabs: [
                                         Tab(
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            '1hykl5m1' /* Sign In */,
-                                          ),
+                                          text: 'Sign In',
                                         ),
                                         Tab(
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            '71tov4km' /* Sign Up */,
-                                          ),
+                                          text: 'Sign Up',
                                         ),
                                       ],
                                       controller: _model.tabBarController,
@@ -310,10 +303,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                       ),
                                                     ),
                                                   Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      '2813w2lp' /* Welcome Back */,
-                                                    ),
+                                                    'Welcome Back',
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -330,11 +320,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 24.0),
                                                     child: Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'gwzfh4p7' /* Fill out the information below... */,
-                                                      ),
+                                                      'Fill out the information below in order to access your account.',
                                                       textAlign:
                                                           TextAlign.start,
                                                       style:
@@ -359,12 +345,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
-                                                        labelText:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          '7iox1xbj' /* Email */,
-                                                        ),
+                                                        labelText: 'Email',
                                                         labelStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -461,12 +442,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                           .passwordVisibility,
                                                       decoration:
                                                           InputDecoration(
-                                                        labelText:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          'dt85ahnp' /* Password */,
-                                                        ),
+                                                        labelText: 'Password',
                                                         labelStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -604,12 +580,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                               'SubscriptionPayment',
                                                               context.mounted);
                                                         },
-                                                        text:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          'ap4uhgqp' /* Go */,
-                                                        ),
+                                                        text: 'Go',
                                                         options:
                                                             FFButtonOptions(
                                                           width: 230.0,
@@ -673,11 +644,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                                       16.0,
                                                                       12.0),
                                                           child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'gy0y15up' /* Or sign in with */,
-                                                            ),
+                                                            'Or sign in with',
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: FlutterFlowTheme
@@ -739,11 +706,8 @@ class _LoginWidgetState extends State<LoginWidget>
                                                                       context
                                                                           .mounted);
                                                                 },
-                                                                text: FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'jb7bi2d9' /* Continue with Google */,
-                                                                ),
+                                                                text:
+                                                                    'Continue with Google',
                                                                 icon: FaIcon(
                                                                   FontAwesomeIcons
                                                                       .google,
@@ -834,10 +798,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                     ),
                                                   ),
                                                 Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'u7x8vwah' /* Create Account */,
-                                                  ),
+                                                  'Create Account',
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -848,10 +809,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 24.0),
                                                   child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'tsc0j3a4' /* Let's get started by filling o... */,
-                                                    ),
+                                                    'Let\'s get started by filling out the form below.',
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -872,12 +830,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                             .sentences,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
-                                                      labelText:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                        'cuv9i8oi' /* Name */,
-                                                      ),
+                                                      labelText: 'Name',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -962,12 +915,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                             .sentences,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
-                                                      labelText:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                        'lic8vvb6' /* Email */,
-                                                      ),
+                                                      labelText: 'Email',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1053,12 +1001,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                     obscureText: !_model
                                                         .passwordCreateVisibility,
                                                     decoration: InputDecoration(
-                                                      labelText:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                        'pzyen40s' /* Password */,
-                                                      ),
+                                                      labelText: 'Password',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1167,11 +1110,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                         .cPasswordCreateVisibility,
                                                     decoration: InputDecoration(
                                                       labelText:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                        't4m57uss' /* Confirm Password */,
-                                                      ),
+                                                          'Confirm Password',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1315,19 +1254,19 @@ class _LoginWidgetState extends State<LoginWidget>
                                                             .doc(user.uid)
                                                             .update(
                                                                 createUsersRecordData(
-                                                              active: true,
+                                                              displayName: _model
+                                                                  .nameCreateController
+                                                                  .text,
                                                               plan: 0,
+                                                              active: true,
+                                                              photoUrl: '',
                                                             ));
 
                                                         context.goNamedAuth(
                                                             'SubscriptionPayment',
                                                             context.mounted);
                                                       },
-                                                      text: FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'l21lu0ei' /* Sign Up */,
-                                                      ),
+                                                      text: 'Sign Up',
                                                       options: FFButtonOptions(
                                                         width: 230.0,
                                                         height: 52.0,

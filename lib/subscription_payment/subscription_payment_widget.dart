@@ -8,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'subscription_payment_model.dart';
@@ -39,7 +40,11 @@ class _SubscriptionPaymentWidgetState extends State<SubscriptionPaymentWidget> {
             _model.plan = 1;
           });
         } else {
-          context.pushNamed('Home');
+          if (currentUserDocument?.role != null) {
+            context.pushNamed('ListUsers');
+          } else {
+            context.pushNamed('Home');
+          }
         }
       } else {
         setState(() {
@@ -89,9 +94,7 @@ class _SubscriptionPaymentWidgetState extends State<SubscriptionPaymentWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
                   child: Text(
-                    FFLocalizations.of(context).getText(
-                      'h9zt0aea' /* Subscription / Payment */,
-                    ),
+                    'Subscription / Payment',
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
                           fontFamily: 'Outfit',
                           color: Color(0xFF8027FF),
@@ -101,9 +104,7 @@ class _SubscriptionPaymentWidgetState extends State<SubscriptionPaymentWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
                   child: Text(
-                    FFLocalizations.of(context).getText(
-                      'iq66xnj2' /* Your Subscription */,
-                    ),
+                    'Your Subscription',
                     style: FlutterFlowTheme.of(context).labelMedium,
                   ),
                 ),
@@ -152,15 +153,11 @@ class _SubscriptionPaymentWidgetState extends State<SubscriptionPaymentWidget> {
                                 }
                               },
                               title: Text(
-                                FFLocalizations.of(context).getText(
-                                  '7dc03yu7' /* Monthly */,
-                                ),
+                                'Monthly',
                                 style: FlutterFlowTheme.of(context).labelSmall,
                               ),
                               subtitle: Text(
-                                FFLocalizations.of(context).getText(
-                                  'id6ncsjo' /* $10 USD/mo */,
-                                ),
+                                '\$10 USD/mo',
                                 style:
                                     FlutterFlowTheme.of(context).headlineMedium,
                               ),
@@ -178,9 +175,7 @@ class _SubscriptionPaymentWidgetState extends State<SubscriptionPaymentWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 24.0, 0.0),
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                'xnjtkhw2' /* Gain unlimited access to all t... */,
-                              ),
+                              'Gain unlimited access to all the content we have to offer! ',
                               style: FlutterFlowTheme.of(context).labelMedium,
                             ),
                           ),
@@ -192,9 +187,7 @@ class _SubscriptionPaymentWidgetState extends State<SubscriptionPaymentWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
                   child: Text(
-                    FFLocalizations.of(context).getText(
-                      '249k2swr' /* Other Offers */,
-                    ),
+                    'Other Offers',
                     style: FlutterFlowTheme.of(context).labelMedium.override(
                           fontFamily: 'Readex Pro',
                           color: Color(0xFFFF2CFF),
@@ -247,15 +240,11 @@ class _SubscriptionPaymentWidgetState extends State<SubscriptionPaymentWidget> {
                                 }
                               },
                               title: Text(
-                                FFLocalizations.of(context).getText(
-                                  'wi3ps707' /* Annual (save $20) */,
-                                ),
+                                'Annual (save \$20)',
                                 style: FlutterFlowTheme.of(context).labelSmall,
                               ),
                               subtitle: Text(
-                                FFLocalizations.of(context).getText(
-                                  'czvbuiqk' /* $100 USD/yr */,
-                                ),
+                                '\$100 USD/yr',
                                 style:
                                     FlutterFlowTheme.of(context).headlineMedium,
                               ),
@@ -273,9 +262,7 @@ class _SubscriptionPaymentWidgetState extends State<SubscriptionPaymentWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 24.0, 0.0),
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                'ocoldhwl' /* Gain unlimited access to all t... */,
-                              ),
+                              'Gain unlimited access to all the content we have to offer! ',
                               style: FlutterFlowTheme.of(context).labelMedium,
                             ),
                           ),
@@ -325,9 +312,7 @@ class _SubscriptionPaymentWidgetState extends State<SubscriptionPaymentWidget> {
                             }
                           },
                           title: Text(
-                            FFLocalizations.of(context).getText(
-                              'o0622dci' /* Free Limited Access */,
-                            ),
+                            'Free Limited Access',
                             style: FlutterFlowTheme.of(context)
                                 .headlineSmall
                                 .override(
@@ -336,9 +321,7 @@ class _SubscriptionPaymentWidgetState extends State<SubscriptionPaymentWidget> {
                                 ),
                           ),
                           subtitle: Text(
-                            FFLocalizations.of(context).getText(
-                              'tqdfs1ud' /* Continue with limited access a... */,
-                            ),
+                            'Continue with limited access at no cost. Create short poems',
                             style: FlutterFlowTheme.of(context).bodySmall,
                           ),
                           tileColor:
@@ -427,9 +410,7 @@ class _SubscriptionPaymentWidgetState extends State<SubscriptionPaymentWidget> {
 
                               setState(() {});
                             },
-                            text: FFLocalizations.of(context).getText(
-                              '1nflpmmq' /* Select Plan */,
-                            ),
+                            text: 'Select Plan',
                             options: FFButtonOptions(
                               width: 270.0,
                               height: 50.0,

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
@@ -127,6 +128,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/listUsers',
           builder: (context, params) => ListUsersWidget(
             create: params.getParam('create', ParamType.double),
+          ),
+        ),
+        FFRoute(
+          name: 'editUser',
+          path: '/editUser',
+          asyncParams: {
+            'user': getDoc(['users'], UsersRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditUserWidget(
+            user: params.getParam('user', ParamType.Document),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
@@ -311,10 +322,9 @@ class FFRoute {
                   child: SizedBox(
                     width: 50.0,
                     height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
+                    child: SpinKitRipple(
+                      color: FlutterFlowTheme.of(context).secondary,
+                      size: 50.0,
                     ),
                   ),
                 )

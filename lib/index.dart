@@ -7,3 +7,4 @@ export '/settings/settings_widget.dart' show SettingsWidget;
 export '/home/home_widget.dart' show HomeWidget;
 export '/form_poem/form_poem_widget.dart' show FormPoemWidget;
 export '/list_users/list_users_widget.dart' show ListUsersWidget;
+export '/edit_user/edit_user_widget.dart' show EditUserWidget;
