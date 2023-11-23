@@ -96,12 +96,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => LoginWidget(),
         ),
         FFRoute(
-          name: 'FormStory',
-          path: '/formStory',
-          requireAuth: true,
-          builder: (context, params) => FormStoryWidget(),
-        ),
-        FFRoute(
           name: 'SubscriptionPayment',
           path: '/subscriptionPayment',
           requireAuth: true,
@@ -118,14 +112,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => HomeWidget(),
         ),
         FFRoute(
-          name: 'FormPoem',
-          path: '/formPoem',
-          requireAuth: true,
-          builder: (context, params) => FormPoemWidget(),
-        ),
-        FFRoute(
           name: 'ListUsers',
           path: '/listUsers',
+          requireAuth: true,
           builder: (context, params) => ListUsersWidget(
             create: params.getParam('create', ParamType.double),
           ),
@@ -133,11 +122,47 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'editUser',
           path: '/editUser',
+          requireAuth: true,
           asyncParams: {
             'user': getDoc(['users'], UsersRecord.fromSnapshot),
           },
           builder: (context, params) => EditUserWidget(
             user: params.getParam('user', ParamType.Document),
+          ),
+        ),
+        FFRoute(
+          name: 'FormAPI',
+          path: '/formAPI',
+          requireAuth: true,
+          builder: (context, params) => FormAPIWidget(
+            type: params.getParam('type', ParamType.String),
+            type2: params.getParam('type2', ParamType.String),
+          ),
+        ),
+        FFRoute(
+          name: 'Reading',
+          path: '/reading',
+          requireAuth: true,
+          builder: (context, params) => ReadingWidget(
+            resultAPI: params.getParam('resultAPI', ParamType.String),
+            title: params.getParam('title', ParamType.String),
+            theme: params.getParam('theme', ParamType.String),
+          ),
+        ),
+        FFRoute(
+          name: 'ListResources',
+          path: '/listResources',
+          requireAuth: true,
+          builder: (context, params) => ListResourcesWidget(
+            create: params.getParam('create', ParamType.double),
+          ),
+        ),
+        FFRoute(
+          name: 'EditResource',
+          path: '/editResource',
+          builder: (context, params) => EditResourceWidget(
+            title: params.getParam('title', ParamType.String),
+            text: params.getParam('text', ParamType.String),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

@@ -10,12 +10,13 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 class ChatGPTCall {
   static Future<ApiCallResponse> call({
-    String? openaiApiKey = '',
-    String? message = '',
+    String? openaiApiKey =
+        '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',
+    String? message = 'Crea un poema corto',
   }) async {
     final ffApiRequestBody = '''
 {
-  "model": "gpt-3.5-turbo",
+  "model": "gpt-3.5-turbo-0613",
   "messages": [
     {
       "role": "user",

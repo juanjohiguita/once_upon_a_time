@@ -1,3 +1,18 @@
 {
-  "indexes": []
+  "indexes": [
+    {
+      "collectionGroup": "resultAPI",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "id_user",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "title",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
 }

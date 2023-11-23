@@ -1,10 +1,13 @@
 // Export pages
-export '/login/login_widget.dart' show LoginWidget;
-export '/form_story/form_story_widget.dart' show FormStoryWidget;
-export '/subscription_payment/subscription_payment_widget.dart'
+export '/transversal/login/login_widget.dart' show LoginWidget;
+export '/transversal/subscription_payment/subscription_payment_widget.dart'
     show SubscriptionPaymentWidget;
-export '/settings/settings_widget.dart' show SettingsWidget;
-export '/home/home_widget.dart' show HomeWidget;
-export '/form_poem/form_poem_widget.dart' show FormPoemWidget;
-export '/list_users/list_users_widget.dart' show ListUsersWidget;
-export '/edit_user/edit_user_widget.dart' show EditUserWidget;
+export '/transversal/settings/settings_widget.dart' show SettingsWidget;
+export '/transversal/home/home_widget.dart' show HomeWidget;
+export '/admin/list_users/list_users_widget.dart' show ListUsersWidget;
+export '/admin/edit_user/edit_user_widget.dart' show EditUserWidget;
+export '/forms/form_a_p_i/form_a_p_i_widget.dart' show FormAPIWidget;
+export '/forms/reading/reading_widget.dart' show ReadingWidget;
+export '/forms/list_resources/list_resources_widget.dart'
+    show ListResourcesWidget;
+export '/forms/edit_resource/edit_resource_widget.dart' show EditResourceWidget;
