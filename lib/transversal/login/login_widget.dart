@@ -612,6 +612,8 @@ class _LoginWidgetState extends State<LoginWidget>
                                                                         'Readex Pro',
                                                                     color: Colors
                                                                         .white,
+                                                                    fontSize:
+                                                                        18.0,
                                                                   ),
                                                           elevation: 3.0,
                                                           borderSide:
@@ -739,6 +741,8 @@ class _LoginWidgetState extends State<LoginWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Readex Pro',
+                                                                        fontSize:
+                                                                            14.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
                                                                       ),
@@ -1298,6 +1302,8 @@ class _LoginWidgetState extends State<LoginWidget>
                                                                       'Readex Pro',
                                                                   color: Colors
                                                                       .white,
+                                                                  fontSize:
+                                                                      18.0,
                                                                 ),
                                                         elevation: 3.0,
                                                         borderSide: BorderSide(

@@ -31,16 +31,16 @@ class ResultAPIRecord extends FirestoreRecord {
   String get title => _title ?? '';
   bool hasTitle() => _title != null;
 
-  // "theme" field.
-  String? _theme;
-  String get theme => _theme ?? '';
-  bool hasTheme() => _theme != null;
+  // "env" field.
+  String? _env;
+  String get env => _env ?? '';
+  bool hasEnv() => _env != null;
 
   void _initializeFields() {
     _idUser = snapshotData['id_user'] as String?;
     _text = snapshotData['text'] as String?;
     _title = snapshotData['title'] as String?;
-    _theme = snapshotData['theme'] as String?;
+    _env = snapshotData['env'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -81,14 +81,14 @@ Map<String, dynamic> createResultAPIRecordData({
   String? idUser,
   String? text,
   String? title,
-  String? theme,
+  String? env,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'id_user': idUser,
       'text': text,
       'title': title,
-      'theme': theme,
+      'env': env,
     }.withoutNulls,
   );
 
@@ -103,12 +103,12 @@ class ResultAPIRecordDocumentEquality implements Equality<ResultAPIRecord> {
     return e1?.idUser == e2?.idUser &&
         e1?.text == e2?.text &&
         e1?.title == e2?.title &&
-        e1?.theme == e2?.theme;
+        e1?.env == e2?.env;
   }
 
   @override
   int hash(ResultAPIRecord? e) =>
-      const ListEquality().hash([e?.idUser, e?.text, e?.title, e?.theme]);
+      const ListEquality().hash([e?.idUser, e?.text, e?.title, e?.env]);
 
   @override
   bool isValidKey(Object? o) => o is ResultAPIRecord;

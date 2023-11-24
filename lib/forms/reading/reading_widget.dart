@@ -13,6 +13,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 import 'reading_model.dart';
 export 'reading_model.dart';
@@ -22,13 +23,15 @@ class ReadingWidget extends StatefulWidget {
     Key? key,
     String? resultAPI,
     required this.title,
-    required this.theme,
+    required this.enviroment,
+    required this.saved,
   })  : this.resultAPI = resultAPI ?? 'null',
         super(key: key);
 
   final String resultAPI;
   final String? title;
-  final String? theme;
+  final String? enviroment;
+  final bool? saved;
 
   @override
   _ReadingWidgetState createState() => _ReadingWidgetState();
@@ -93,6 +96,75 @@ class _ReadingWidgetState extends State<ReadingWidget>
     super.initState();
     _model = createModel(context, () => ReadingModel());
 
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (widget.enviroment == 'Jungle') {
+        _model.soundPlayer1 ??= AudioPlayer();
+        if (_model.soundPlayer1!.playing) {
+          await _model.soundPlayer1!.stop();
+        }
+        _model.soundPlayer1!.setVolume(0.3);
+        _model.soundPlayer1!
+            .setAsset('assets/audios/Jungle.mp3')
+            .then((_) => _model.soundPlayer1!.play());
+      } else {
+        if (widget.enviroment == 'Space') {
+          _model.soundPlayer2 ??= AudioPlayer();
+          if (_model.soundPlayer2!.playing) {
+            await _model.soundPlayer2!.stop();
+          }
+          _model.soundPlayer2!.setVolume(1.0);
+          _model.soundPlayer2!
+              .setAsset('assets/audios/Space.mp3')
+              .then((_) => _model.soundPlayer2!.play());
+        } else {
+          if (widget.enviroment == 'Sea') {
+            _model.soundPlayer3 ??= AudioPlayer();
+            if (_model.soundPlayer3!.playing) {
+              await _model.soundPlayer3!.stop();
+            }
+            _model.soundPlayer3!.setVolume(1.0);
+            _model.soundPlayer3!
+                .setAsset('assets/audios/Sea.mp3')
+                .then((_) => _model.soundPlayer3!.play());
+          } else {
+            if (widget.enviroment == 'Home') {
+              _model.soundPlayer4 ??= AudioPlayer();
+              if (_model.soundPlayer4!.playing) {
+                await _model.soundPlayer4!.stop();
+              }
+              _model.soundPlayer4!.setVolume(1.0);
+              _model.soundPlayer4!
+                  .setAsset('assets/audios/fellowship-171074.m4a')
+                  .then((_) => _model.soundPlayer4!.play());
+            } else {
+              if (widget.enviroment == 'Beach') {
+                _model.soundPlayer5 ??= AudioPlayer();
+                if (_model.soundPlayer5!.playing) {
+                  await _model.soundPlayer5!.stop();
+                }
+                _model.soundPlayer5!.setVolume(1.0);
+                _model.soundPlayer5!
+                    .setAsset('assets/audios/Playa.mp3')
+                    .then((_) => _model.soundPlayer5!.play());
+              } else {
+                if (widget.enviroment == 'Mountain') {
+                  _model.soundPlayer6 ??= AudioPlayer();
+                  if (_model.soundPlayer6!.playing) {
+                    await _model.soundPlayer6!.stop();
+                  }
+                  _model.soundPlayer6!.setVolume(0.3);
+                  _model.soundPlayer6!
+                      .setAsset('assets/audios/videoplayback.m4a')
+                      .then((_) => _model.soundPlayer6!.play());
+                }
+              }
+            }
+          }
+        }
+      }
+    });
+
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -144,7 +216,17 @@ class _ReadingWidgetState extends State<ReadingWidget>
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('Home');
+              _model.soundPlayer1?.stop();
+              _model.soundPlayer4?.stop();
+              _model.soundPlayer6?.stop();
+              _model.soundPlayer2?.stop();
+              _model.soundPlayer5?.stop();
+              _model.soundPlayer3?.stop();
+              if (widget.saved == false) {
+                context.pushNamed('Home');
+              } else {
+                context.pushNamed('ListResources');
+              }
             },
           ),
           actions: [],
@@ -220,124 +302,134 @@ class _ReadingWidgetState extends State<ReadingWidget>
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
-                child: Container(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 4.0,
-                        color: Color(0x55000000),
-                        offset: Offset(0.0, 2.0),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(12.0),
-                    border: Border.all(
-                      color: FlutterFlowTheme.of(context).alternate,
-                      width: 1.0,
-                    ),
-                  ),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 16.0, 16.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  'Did you like it?',
-                                  style:
-                                      FlutterFlowTheme.of(context).titleLarge,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        FFButtonWidget(
-                          onPressed: () async {
-                            var resultAPIRecordReference =
-                                ResultAPIRecord.collection.doc();
-                            await resultAPIRecordReference
-                                .set(createResultAPIRecordData(
-                              idUser: currentUserUid,
-                              text: widget.resultAPI,
-                              title: widget.title,
-                            ));
-                            _model.result = ResultAPIRecord.getDocumentFromData(
-                                createResultAPIRecordData(
-                                  idUser: currentUserUid,
-                                  text: widget.resultAPI,
-                                  title: widget.title,
-                                ),
-                                resultAPIRecordReference);
-                            if (_model.result != null) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Success',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBtnText,
-                                    ),
-                                  ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).success,
-                                ),
-                              );
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Error',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBtnText,
-                                    ),
-                                  ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).error,
-                                ),
-                              );
-                            }
-
-                            setState(() {});
-                          },
-                          text: 'Save',
-                          options: FFButtonOptions(
-                            width: 130.0,
-                            height: 50.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context).titleSmall,
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
+              if (widget.saved == false)
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 12.0),
+                  child: Container(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 4.0,
+                          color: Color(0x55000000),
+                          offset: Offset(0.0, 2.0),
+                        )
                       ],
+                      borderRadius: BorderRadius.circular(12.0),
+                      border: Border.all(
+                        color: FlutterFlowTheme.of(context).alternate,
+                        width: 1.0,
+                      ),
                     ),
-                  ),
-                ).animateOnPageLoad(
-                    animationsMap['containerOnPageLoadAnimation']!),
-              ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          24.0, 16.0, 16.0, 16.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    'Did you like it?',
+                                    style:
+                                        FlutterFlowTheme.of(context).titleLarge,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          FFButtonWidget(
+                            onPressed: () async {
+                              var resultAPIRecordReference =
+                                  ResultAPIRecord.collection.doc();
+                              await resultAPIRecordReference
+                                  .set(createResultAPIRecordData(
+                                idUser: currentUserUid,
+                                text: widget.resultAPI,
+                                title: widget.title,
+                                env: widget.enviroment,
+                              ));
+                              _model.result =
+                                  ResultAPIRecord.getDocumentFromData(
+                                      createResultAPIRecordData(
+                                        idUser: currentUserUid,
+                                        text: widget.resultAPI,
+                                        title: widget.title,
+                                        env: widget.enviroment,
+                                      ),
+                                      resultAPIRecordReference);
+                              if (_model.result != null) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Success',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).success,
+                                  ),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Error',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).error,
+                                  ),
+                                );
+                              }
+
+                              setState(() {});
+                            },
+                            text: 'Save',
+                            options: FFButtonOptions(
+                              width: 130.0,
+                              height: 50.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 18.0,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ).animateOnPageLoad(
+                      animationsMap['containerOnPageLoadAnimation']!),
+                ),
             ],
           ),
         ),

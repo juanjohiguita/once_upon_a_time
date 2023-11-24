@@ -437,7 +437,7 @@ class _FormAPIWidgetState extends State<FormAPIWidget> {
                                   });
                                   _model.apiResult = await ChatGPTCall.call(
                                     openaiApiKey:
-                                        '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',
+                                        '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',
                                     message: _model.prompt,
                                   );
                                   if ((_model.apiResult?.succeeded ?? true)) {
@@ -478,8 +478,12 @@ class _FormAPIWidgetState extends State<FormAPIWidget> {
                                           '${_model.dDTopicThemeValue} ${widget.type2}: ${_model.textfieldMainCharacterController.text} in ${_model.dDEnviromentValue}',
                                           ParamType.String,
                                         ),
-                                        'theme': serializeParam(
-                                          _model.dDTopicThemeValue,
+                                        'saved': serializeParam(
+                                          false,
+                                          ParamType.bool,
+                                        ),
+                                        'enviroment': serializeParam(
+                                          _model.dDEnviromentValue,
                                           ParamType.String,
                                         ),
                                       }.withoutNulls,
@@ -488,7 +492,8 @@ class _FormAPIWidgetState extends State<FormAPIWidget> {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'Error',
+                                          (_model.apiResult?.jsonBody ?? '')
+                                              .toString(),
                                           style: FlutterFlowTheme.of(context)
                                               .titleMedium
                                               .override(
@@ -521,6 +526,7 @@ class _FormAPIWidgetState extends State<FormAPIWidget> {
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
+                                        fontSize: 18.0,
                                       ),
                                   elevation: 4.0,
                                   borderSide: BorderSide(

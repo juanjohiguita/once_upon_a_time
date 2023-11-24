@@ -14,12 +14,19 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 
 class ReadingModel extends FlutterFlowModel<ReadingWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  AudioPlayer? soundPlayer1;
+  AudioPlayer? soundPlayer2;
+  AudioPlayer? soundPlayer3;
+  AudioPlayer? soundPlayer4;
+  AudioPlayer? soundPlayer5;
+  AudioPlayer? soundPlayer6;
   // Stores action output result for [Backend Call - Create Document] action in chatGuest widget.
   ResultAPIRecord? result;
 

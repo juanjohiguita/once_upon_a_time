@@ -74,31 +74,29 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
               ),
               Container(
-                width: 100.0,
+                width: 142.0,
                 height: 100.0,
                 decoration: BoxDecoration(
                   color: Color(0x00FFFFFF),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-                      child: FlutterFlowIconButton(
-                        borderColor: Colors.transparent,
-                        borderRadius: 30.0,
-                        borderWidth: 1.0,
-                        buttonSize: 44.0,
-                        icon: Icon(
-                          Icons.menu_book,
-                          color: FlutterFlowTheme.of(context).secondary,
-                          size: 35.0,
-                        ),
-                        onPressed: () {
-                          print('IconButton pressed ...');
-                        },
+                    FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 30.0,
+                      borderWidth: 1.0,
+                      buttonSize: 70.0,
+                      icon: Icon(
+                        Icons.menu_book,
+                        color: FlutterFlowTheme.of(context).secondary,
+                        size: 35.0,
                       ),
+                      onPressed: () async {
+                        context.pushNamed('ListResources');
+                      },
                     ),
                     Padding(
                       padding:
@@ -107,7 +105,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                         borderColor: Colors.transparent,
                         borderRadius: 30.0,
                         borderWidth: 1.0,
-                        buttonSize: 44.0,
+                        buttonSize: 70.0,
                         icon: Icon(
                           Icons.settings_rounded,
                           color: FlutterFlowTheme.of(context).secondary,
@@ -136,12 +134,15 @@ class _HomeWidgetState extends State<HomeWidget> {
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Text(
-                      'Once upon a time...',
-                      style: FlutterFlowTheme.of(context).labelMedium.override(
-                            fontFamily: 'Readex Pro',
-                            fontSize: 16.0,
-                          ),
+                    AuthUserStreamWidget(
+                      builder: (context) => Text(
+                        '${currentUserDisplayName}, Once upon a time...',
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  fontSize: 16.0,
+                                ),
+                      ),
                     ),
                   ],
                 ),

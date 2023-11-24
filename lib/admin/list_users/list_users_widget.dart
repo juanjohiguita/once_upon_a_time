@@ -124,20 +124,7 @@ class _ListUsersWidgetState extends State<ListUsersWidget> {
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 12.0, 0.0, 12.0),
-                        child: Text(
-                          'Manage your users below.',
-                          style:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Readex Pro',
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                        ),
-                      ),
-                    ],
+                    children: [],
                   ),
                 ),
                 Padding(
@@ -179,8 +166,8 @@ class _ListUsersWidgetState extends State<ListUsersWidget> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Container(
-                                  width: 44.0,
-                                  height: 44.0,
+                                  width: 60.0,
+                                  height: 60.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context).accent1,
                                     shape: BoxShape.circle,
@@ -198,7 +185,7 @@ class _ListUsersWidgetState extends State<ListUsersWidget> {
                                       child: Image.network(
                                         listViewUsersRecord.photoUrl,
                                         width: 44.0,
-                                        height: 44.0,
+                                        height: 55.0,
                                         fit: BoxFit.cover,
                                       ),
                                     ),

@@ -1,7 +1,10 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -15,10 +18,12 @@ class EditResourceWidget extends StatefulWidget {
     Key? key,
     required this.title,
     required this.text,
+    required this.document,
   }) : super(key: key);
 
   final String? title;
   final String? text;
+  final DocumentReference? document;
 
   @override
   _EditResourceWidgetState createState() => _EditResourceWidgetState();
@@ -34,7 +39,7 @@ class _EditResourceWidgetState extends State<EditResourceWidget> {
     super.initState();
     _model = createModel(context, () => EditResourceModel());
 
-    _model.textController ??= TextEditingController();
+    _model.textController ??= TextEditingController(text: widget.text);
     _model.textFieldFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -98,7 +103,7 @@ class _EditResourceWidgetState extends State<EditResourceWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Edit',
+                    'Edit: ${widget.title}',
                     style: FlutterFlowTheme.of(context).displaySmall.override(
                           fontFamily: 'Outfit',
                           color: FlutterFlowTheme.of(context).secondary,
@@ -146,7 +151,10 @@ class _EditResourceWidgetState extends State<EditResourceWidget> {
                           contentPadding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 24.0, 16.0, 12.0),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              fontSize: 16.0,
+                            ),
                         maxLines: null,
                         cursorColor: FlutterFlowTheme.of(context).primary,
                         validator:
@@ -158,10 +166,14 @@ class _EditResourceWidgetState extends State<EditResourceWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 12.0),
                     child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        await widget.document!.update(createResultAPIRecordData(
+                          text: _model.textController.text,
+                        ));
+
+                        context.pushNamed('ListResources');
                       },
-                      text: 'Save',
+                      text: 'Save Changes',
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 54.0,
@@ -174,6 +186,7 @@ class _EditResourceWidgetState extends State<EditResourceWidget> {
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
+                                  fontSize: 18.0,
                                 ),
                         elevation: 4.0,
                         borderSide: BorderSide(

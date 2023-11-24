@@ -12,13 +12,7 @@ import 'list_resources_model.dart';
 export 'list_resources_model.dart';
 
 class ListResourcesWidget extends StatefulWidget {
-  const ListResourcesWidget({
-    Key? key,
-    double? create,
-  })  : this.create = create ?? 0.0,
-        super(key: key);
-
-  final double create;
+  const ListResourcesWidget({Key? key}) : super(key: key);
 
   @override
   _ListResourcesWidgetState createState() => _ListResourcesWidgetState();
@@ -235,8 +229,12 @@ class _ListResourcesWidgetState extends State<ListResourcesWidget> {
                                             listViewResultAPIRecord.title,
                                             ParamType.String,
                                           ),
-                                          'theme': serializeParam(
-                                            listViewResultAPIRecord.theme,
+                                          'saved': serializeParam(
+                                            true,
+                                            ParamType.bool,
+                                          ),
+                                          'enviroment': serializeParam(
+                                            listViewResultAPIRecord.env,
                                             ParamType.String,
                                           ),
                                         }.withoutNulls,
@@ -269,6 +267,10 @@ class _ListResourcesWidgetState extends State<ListResourcesWidget> {
                                           'text': serializeParam(
                                             listViewResultAPIRecord.text,
                                             ParamType.String,
+                                          ),
+                                          'document': serializeParam(
+                                            listViewResultAPIRecord.reference,
+                                            ParamType.DocumentReference,
                                           ),
                                         }.withoutNulls,
                                       );

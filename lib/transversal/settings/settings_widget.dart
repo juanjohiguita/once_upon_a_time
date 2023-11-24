@@ -455,7 +455,10 @@ class _SettingsWidgetState extends State<SettingsWidget>
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).accent1,
-                    textStyle: FlutterFlowTheme.of(context).bodyLarge,
+                    textStyle: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Readex Pro',
+                          fontSize: 18.0,
+                        ),
                     elevation: 0.0,
                     borderSide: BorderSide(
                       color: FlutterFlowTheme.of(context).primary,

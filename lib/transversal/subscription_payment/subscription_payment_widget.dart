@@ -425,6 +425,7 @@ class _SubscriptionPaymentWidgetState extends State<SubscriptionPaymentWidget> {
                                     fontFamily: 'Readex Pro',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBtnText,
+                                    fontSize: 18.0,
                                   ),
                               elevation: 2.0,
                               borderSide: BorderSide(

@@ -146,16 +146,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ReadingWidget(
             resultAPI: params.getParam('resultAPI', ParamType.String),
             title: params.getParam('title', ParamType.String),
-            theme: params.getParam('theme', ParamType.String),
+            enviroment: params.getParam('enviroment', ParamType.String),
+            saved: params.getParam('saved', ParamType.bool),
           ),
         ),
         FFRoute(
           name: 'ListResources',
           path: '/listResources',
           requireAuth: true,
-          builder: (context, params) => ListResourcesWidget(
-            create: params.getParam('create', ParamType.double),
-          ),
+          builder: (context, params) => ListResourcesWidget(),
         ),
         FFRoute(
           name: 'EditResource',
@@ -163,6 +162,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => EditResourceWidget(
             title: params.getParam('title', ParamType.String),
             text: params.getParam('text', ParamType.String),
+            document: params.getParam(
+                'document', ParamType.DocumentReference, false, ['resultAPI']),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
@@ -343,14 +344,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: SpinKitRipple(
-                      color: FlutterFlowTheme.of(context).secondary,
-                      size: 50.0,
-                    ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/6dcfd843fa6c807d0e940403af3163e9.jpg',
+                    fit: BoxFit.cover,
                   ),
                 )
               : page;
